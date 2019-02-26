@@ -1,0 +1,51 @@
+class Node:
+    def __init__(self,value):
+        self.data = value
+        self.link = None
+class SingleLinkedList:
+    def __init__(self):
+        self.start = None
+    def display_list(self):
+        if self.start == None:
+            print('List Empty')
+        else:
+            p = self.start
+            while p != None:
+                print(p.data,'',end='')
+                p = p.link
+    def count_nodes(self):
+        p = self.start
+        count = 0
+        while p != None:
+            count +=1
+            p = p.link
+        return count
+    def find_node(self,val):
+        position = 1
+        p = self.start
+        while p != None:
+            if p.data == val:
+                print('Value at Node',position)
+                return True
+            position += 1
+            p = p.link
+        print('Value not found')
+        return False
+    def insert_at_beginning(self,data):
+        temp = Node(data)
+        temp.link = self.start
+        self.start = temp
+    def insert_at_end(self,data):
+        temp = Node(data)
+        if self.start is None:
+            self.start = temp
+        else:
+            p = self.start
+            while p.link is not None:
+                p = p.link
+            p.link = temp
+    def create_list(self):
+        n = int(input('Number of nodes:'))
+        for i in range(n):
+            data = input('Node data:')
+            self.insert_at_end(data)
